@@ -5,4 +5,4 @@ Thumbs.db
 *.zip
 *.crx
 *.pem
-.vscode/
+config.bat

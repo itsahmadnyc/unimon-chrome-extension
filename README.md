@@ -107,6 +107,10 @@ docs/                README screenshots
 Unimon is a **developer and testing tool**. Use it on your own websites and apps, or where you have permission, to check how they behave with a single screen.
 Please don't use it to break the rules of an exam, assessment or any service you don't control. The software is provided as is (see the license), and you are responsible for how you use it.
 
+## 🙌 Contributing
+
+Contributions are very welcome! Found a bug or have an idea? [Open an issue](https://github.com/itsahmadnyc/unimon-chrome-extension/issues/new/choose). Want to send code? Read [CONTRIBUTING.md](CONTRIBUTING.md) and open a pull request.
+
 ## 📄 License
 
 Released under the [MIT License](LICENSE).
