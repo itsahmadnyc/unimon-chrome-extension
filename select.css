@@ -1,0 +1,3 @@
+/* Selection ka neela highlight chhupao; text select aur copy phir bhi normal chalta hai */
+::selection { background: transparent !important; color: inherit !important; text-shadow: inherit !important; }
+::-moz-selection { background: transparent !important; color: inherit !important; }

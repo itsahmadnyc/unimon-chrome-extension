@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Unimon</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body data-on="false">
+  <main class="wrap">
+    <header class="top">
+      <img class="logo" src="icons/icon48.png" alt="" width="34" height="34">
+      <div class="title">
+        <h1>Unimon</h1>
+        <p class="sub">Works on all websites</p>
+      </div>
+      <span class="pill" id="pill">Off</span>
+    </header>
+
+    <section class="stage" aria-hidden="true">
+      <svg viewBox="0 0 240 124" class="scene">
+        <!-- cable: both monitors always stay connected -->
+        <path class="cable" d="M64 100 C 64 118, 176 118, 176 100" />
+        <circle class="plug" cx="120" cy="113.5" r="3.2" />
+
+        <!-- left monitor (always awake) -->
+        <g class="mon mon-a">
+          <rect class="body" x="18" y="12" width="92" height="66" rx="12" />
+          <rect class="screen" x="25" y="19" width="78" height="52" rx="7" />
+          <rect class="stand" x="58" y="78" width="12" height="14" rx="3" />
+          <rect class="foot" x="44" y="91" width="40" height="9" rx="4.5" />
+          <g class="face">
+            <circle cx="52" cy="41" r="4" />
+            <circle cx="76" cy="41" r="4" />
+            <path d="M57 52 Q64 58 71 52" />
+            <circle class="blush" cx="44" cy="51" r="4" />
+            <circle class="blush" cx="84" cy="51" r="4" />
+          </g>
+        </g>
+
+        <!-- right monitor (falls asleep when ON) -->
+        <g class="mon mon-b">
+          <rect class="body" x="130" y="12" width="92" height="66" rx="12" />
+          <rect class="screen" x="137" y="19" width="78" height="52" rx="7" />
+          <rect class="stand" x="170" y="78" width="12" height="14" rx="3" />
+          <rect class="foot" x="156" y="91" width="40" height="9" rx="4.5" />
+          <g class="face awake">
+            <circle cx="164" cy="41" r="4" />
+            <circle cx="188" cy="41" r="4" />
+            <path d="M169 52 Q176 58 183 52" />
+            <circle class="blush" cx="156" cy="51" r="4" />
+            <circle class="blush" cx="196" cy="51" r="4" />
+          </g>
+          <g class="face asleep">
+            <path d="M159 42 Q164 46 169 42" />
+            <path d="M183 42 Q188 46 193 42" />
+            <path d="M172 54 Q176 52 180 54" />
+          </g>
+          <g class="zzz">
+            <text x="206" y="16">z</text>
+            <text x="214" y="8">z</text>
+          </g>
+        </g>
+      </svg>
+    </section>
+
+    <p class="status" id="status" aria-live="polite">Chrome sees 2 screens</p>
+
+    <button class="row" id="toggle" role="switch" aria-checked="false">
+      <span class="row-text">
+        <span class="row-title">Hide second screen</span>
+        <span class="row-hint">Cable stays connected</span>
+      </span>
+      <span class="switch"><span class="knob"></span></span>
+    </button>
+
+    <section class="opts" aria-labelledby="opts-title">
+      <div class="sec-row">
+        <h2 class="sec" id="opts-title">Extra options</h2>
+        <button class="all-switch" id="all" role="switch" aria-checked="false" aria-label="Turn all extra options on or off">
+          <span class="all-label" id="all-label">All off</span>
+          <span class="switch"><span class="knob"></span></span>
+        </button>
+      </div>
+      <div class="opts-list">
+        <button class="row opt" id="mouse" role="switch" aria-checked="false">
+          <span class="row-text">
+            <span class="row-title">Hide mouse leaving page</span>
+            <span class="row-hint">Blocks mouseleave events</span>
+          </span>
+          <span class="switch"><span class="knob"></span></span>
+        </button>
+
+        <button class="row opt" id="select" role="switch" aria-checked="false">
+          <span class="row-text">
+            <span class="row-title">Hide selection highlight</span>
+            <span class="row-hint">Text copies normally, no blue</span>
+          </span>
+          <span class="switch"><span class="knob"></span></span>
+        </button>
+
+        <button class="row opt" id="copy" role="switch" aria-checked="false">
+          <span class="row-text">
+            <span class="row-title">Allow copy &amp; paste</span>
+            <span class="row-hint">Removes copy, paste and right-click blocks</span>
+          </span>
+          <span class="switch"><span class="knob"></span></span>
+        </button>
+
+        <button class="row opt" id="track" role="switch" aria-checked="false">
+          <span class="row-text">
+            <span class="row-title">Hide selection &amp; copy events</span>
+            <span class="row-hint">Blocks selectionchange, copy, cut listeners</span>
+          </span>
+          <span class="switch"><span class="knob"></span></span>
+        </button>
+
+        <button class="row opt" id="leave" role="switch" aria-checked="false">
+          <span class="row-text">
+            <span class="row-title">Skip leave-page prompt</span>
+            <span class="row-hint">No "Leave site?" dialog</span>
+          </span>
+          <span class="switch"><span class="knob"></span></span>
+        </button>
+
+        <button class="row opt" id="devtools" role="switch" aria-checked="false">
+          <span class="row-text">
+            <span class="row-title">Hide DevTools size gap</span>
+            <span class="row-hint">Window size looks normal with DevTools open</span>
+          </span>
+          <span class="switch"><span class="knob"></span></span>
+        </button>
+      </div>
+    </section>
+
+    <button class="test-btn" id="test" type="button">Run self-test on this tab</button>
+    <ul class="results" id="results" aria-live="polite"></ul>
+
+    <footer class="foot-note" id="note">Works on all http and https websites</footer>
+  </main>
+  <script src="popup.js"></script>
+</body>
+</html>
